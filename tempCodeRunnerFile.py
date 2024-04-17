@@ -1,1 +1,0 @@
-os (nome, senha) VALUES (?, ?)'
