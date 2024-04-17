@@ -1,6 +1,7 @@
 import sqlite3
 
 def verificarCredenciais(usuario, senha):
+    
     # Conectar ao banco de dados SQLite
     conn = sqlite3.connect('userSenhaProd.db')
 
@@ -25,6 +26,7 @@ def verificarCredenciais(usuario, senha):
 
         if senhaDoBanco == senha:
             print("Acesso concedido!")
+            return True
         else:
             print("Acesso negado.")
     else:
@@ -32,10 +34,21 @@ def verificarCredenciais(usuario, senha):
 
     #Fecha conexão com banco de dados
     conn.close()    
+    return False
 
-userGerenciador = input("Usuário: ")
-senhaGerenciador = input("Senha: ")
+#Login
 
-print("Você digitou o usuário",userGerenciador,"e a senha",senhaGerenciador,)
-verificarCredenciais(userGerenciador, senhaGerenciador)
+usuarioEntrou = False
 
+while not usuarioEntrou:
+    
+    userGerenciador = input("Usuário: ")
+    senhaGerenciador = input("Senha: ")
+    usuarioEntrou = verificarCredenciais(userGerenciador, senhaGerenciador)
+
+    if usuarioEntrou:
+        print("Inicializando...")
+    else:
+        print("Por favor, tente novamente!")
+
+print("Seja bem vindo ao seu mais novo gerenciador de senhas")
