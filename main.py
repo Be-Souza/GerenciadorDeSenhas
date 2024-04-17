@@ -1,4 +1,9 @@
 import sqlite3
+import os
+import time
+
+def limparTerminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def verificarCredenciais(usuario, senha):
     
@@ -16,7 +21,7 @@ def verificarCredenciais(usuario, senha):
     #Verifica se a senha que veio é igual a senha que foi
 
     if deuCerto:                     # Esse if, que parece meio sem pé nem cabeça, na verdade, está verificando se       
-                                     # o banco de dados retornou de fato alguma coisa, se for "true", retornou normal
+                                     # o banco de dados retornou de fato alguma coisa. se for "true", retornou normal
         senhaDoBanco = deuCerto[0]   # se for "false", significa que ele recebeu "none" do banco de dados, e não vai rodar
                                      # o código dentro do if       
                                                                   # E o senhaDoBanco = deuCerto[0] é pra atribuir à 
@@ -25,11 +30,14 @@ def verificarCredenciais(usuario, senha):
         #Comparar de fato se tá certo
 
         if senhaDoBanco == senha:
+            limparTerminal()
             print("Acesso concedido!")
             return True
         else:
+            limparTerminal()
             print("Acesso negado.")
     else:
+        limparTerminal()
         print("Usuário não encontrado.")
 
     #Fecha conexão com banco de dados
@@ -52,3 +60,14 @@ while not usuarioEntrou:
         print("Por favor, tente novamente!")
 
 print("Seja bem vindo ao seu mais novo gerenciador de senhas")
+time.sleep(1)
+limparTerminal()
+
+print(f"Bem vindo {userGerenciador}!")
+
+usandoPrograma = True
+
+while usandoPrograma:
+    print("O que você deseja fazer?")
+    print("\n")
+    print("1. Listar senhas")
