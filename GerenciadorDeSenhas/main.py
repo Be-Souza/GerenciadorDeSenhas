@@ -113,8 +113,9 @@ def printaTela():
     print("\n")
     print("1. Listar senhas")
     print("2. Inserir nova senha")
-    print("3. ")
-    print("4. ")
+    print("3. Excluir uma senha")
+    print("4. Gerador de senhas")
+    print("5. Sair")
 
 ####COMEÇO OFICIAL DO PROGRAMA-------------------------------------------------------------------------------------
 
@@ -145,6 +146,15 @@ usandoPrograma = True
 
 ####DEFINIÇÃO DE ESCOLHAS (cada um é uma função dentro do programa) -----------------------------------------
 
+def insereSenha():
+    limparTerminal()
+    conn = sqlite3.connect('passworld.db')
+    cursor = conn.cursor()
+    armazenaSite = input("Digite o SITE ou SERVIÇO para qual você deseja cadastrar uma senha: ")
+    armazenaUser = input(f"Digite o USUÁRIO que será usado no site/serviço {armazenaSite}: ")
+    armazenaSenha = input(f"Digite a SENHA que será usada no site/serviço")
+
+
 
 
 ####DEFINIÇÃO DE ESCOLHAS (cada um é uma função dentro do programa) -----------------------------------------
@@ -152,5 +162,8 @@ usandoPrograma = True
 while usandoPrograma:
     printaTela()
     escolhaTela = input("\nDigite o número referente a opção desejada: ")
-
+    if escolhaTela == '1':
+        print("jonasguedes")
+    if escolhaTela == '2':
+        insereSenha()
     usandoPrograma = False
